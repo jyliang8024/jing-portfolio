@@ -1,0 +1,5 @@
+# Original source media stays local and is not deployed.
+/originals/
+.DS_Store
+*.zip
+node_modules/

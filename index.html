@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111110">
+  <meta name="description" content="Jing — AI products, global GTM, and creative experiments. Working where product, growth, and creativity overlap.">
+  <title>JING</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <script defer src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <!-- VT323 font in assets/fonts, distributed under the SIL Open Font License.
+Copyright 2011, The VT323 Project Authors (peter.hull@oikoi.com)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+
+—————————————————————————————-
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+—————————————————————————————-
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting — in part or in whole — any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+
+  -->
+  <style>
+    @font-face{font-family:'Jing Terminal';src:url("assets/fonts/vt323.ttf") format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+    :root{--ink:#111110;--paper:#f0eee7;--muted:#b1afa8;--gutter:clamp(48px,4vw,64px);--nav-font:'Jing Terminal',monospace;--mono:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+    *,*::before,*::after{box-sizing:border-box}html{scroll-padding-top:84px}body{margin:0;background:var(--ink);color:var(--paper);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}body.modal-open{overflow:hidden}::selection{color:var(--ink);background:var(--paper)}a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}button:disabled{cursor:default}h1,h2,h3,p,figure{margin:0}a:focus-visible,button:focus-visible{outline:1px solid var(--paper);outline-offset:7px}img{display:block;width:100%;height:100%;object-fit:cover}button,a{-webkit-tap-highlight-color:transparent}.meta{font:10px/1.65 var(--mono);letter-spacing:.12em;text-transform:uppercase}.muted{color:var(--muted)}.skip-link{position:fixed;top:8px;left:24px;padding:12px;background:var(--ink);z-index:100;transform:translateY(-150%)}.skip-link:focus{transform:none}
+    /* One fixed film, shared by all five sections. */
+    .film{position:fixed;inset:0;z-index:-2;background:#111110;overflow:hidden}.film video{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.65);display:block}.film::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.43),rgba(0,0,0,.15) 32%,rgba(0,0,0,.58))}.film-shade{position:fixed;inset:0;z-index:-1;background:rgba(8,9,8,.13);pointer-events:none}.film-grain{position:fixed;inset:0;z-index:12;opacity:.035;pointer-events:none;background-image:url("assets/images/grain.svg")}
+    .site-header{position:fixed;top:0;left:0;width:100%;z-index:30;display:flex;align-items:center;gap:32px;height:64px;padding:0 var(--gutter);background:rgba(20,20,20,.22);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:0;box-shadow:none}.brand{font-family:var(--nav-font);font-size:22px;line-height:1;font-weight:400;letter-spacing:.12em}.nav-links{font-family:var(--nav-font);display:flex;gap:38px;align-items:center;margin-left:auto}.nav-links a{position:relative;padding:8px 0;color:#e1e0d9;font-size:13px;letter-spacing:.14em}.nav-links a,.text-link{transition:opacity .2s,color .2s}.nav-links a:hover,.nav-links a[aria-current]{color:#fff}.text-link:hover{opacity:.65}.explore{display:inline-flex;justify-content:center;align-items:center;min-width:0;height:40px;padding:0 26px;border:0;border-radius:0;background:#fff;color:#111;font:13px/1 var(--nav-font);letter-spacing:.14em;transition:background .2s}.explore:hover{background:#deded8}.arrow{font-family:Arial,sans-serif;font-size:20px;line-height:1}.menu-toggle{display:none}
+    main{width:100%}section{position:relative}.section-top{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:19px}.section-id{display:flex;gap:45px}.section-id span:first-child{color:#aba9a3}.hero{height:100vh;height:100svh}.hero-title{position:absolute;left:var(--gutter);bottom:8vh;bottom:8svh;font-size:clamp(48px,5.6vw,86px);font-weight:400;line-height:1.025;letter-spacing:-.062em;margin:0;max-width:calc(100% - var(--gutter) * 2);text-shadow:0 2px 35px rgba(0,0,0,.16)}.hero-title>span{display:block}.hero-middle{position:absolute;right:var(--gutter);top:34%;}.identity{width:max-content;font-size:11px;line-height:1.9}
+    /* ABOUT — a grayscale editorial headline with a compact practice note. */
+    .about{padding:90px var(--gutter) 120px;min-height:100svh;scroll-margin-top:-84px;background:rgba(12,13,12,.8)}.about-main{display:grid;grid-template-columns:1fr 3fr;gap:40px;margin-top:124px}.currently{padding-top:9px}.currently p{margin-top:26px;line-height:1.9}.about-title{position:absolute;right:5vw;bottom:8vh;bottom:8svh;width:56vw;max-width:calc(100% - var(--gutter) * 2);text-align:left;font-weight:400;font-size:clamp(40px,5.8vw,88px);line-height:1.045;letter-spacing:-.058em;color:#c6c5be;background:linear-gradient(177deg,#f3f1e9 5%,#cdcbc4 34%,#a4a39d 56%,#858580 76%,#858580 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}@media (forced-colors:active){.about-title{background:none;color:CanvasText;-webkit-text-fill-color:CanvasText}}
+    /* EXPERIENCE — three different compositions, no timeline or cards. */
+    .experience{background:rgba(10,11,10,.44);padding:58px var(--gutter) 0}.experience>.section-top{position:relative;z-index:1}.experience-chapter{position:relative;min-height:820px;height:100svh;padding:90px 0 60px;display:flex;flex-direction:column;justify-content:center}.chapter-state{font-size:clamp(42px,7.3vw,112px);letter-spacing:-.065em;line-height:1;font-weight:400}.chapter-title{font-size:clamp(70px,10vw,155px);line-height:.94;letter-spacing:-.065em;font-weight:400}.chapter-subtitle{font-size:clamp(22px,2.4vw,36px);line-height:1.3;letter-spacing:-.035em}.chapter-tags{display:flex;gap:12px 25px;flex-wrap:wrap;max-width:540px;color:#c6c5bc}.chapter-footer{position:absolute;bottom:42px;left:0;right:0;display:flex;justify-content:space-between}.chapter-title-link{display:flex;align-items:baseline;gap:clamp(10px,1.2vw,18px);color:inherit;text-decoration:none;cursor:pointer;transition:opacity .24s ease}.chapter-title-link>span:first-child{min-width:0}.chapter-title-link .external-arrow{flex:none;font:400 clamp(16px,2.5vw,36px)/1 Arial,Helvetica,sans-serif;letter-spacing:0;opacity:.85;transition:transform .24s ease}.chapter-title-link:is(:hover,:focus-visible){opacity:.78}.chapter-title-link:is(:hover,:focus-visible) .external-arrow{transform:translate(3px,-3px)}.chapter-one{height:auto;min-height:100svh}.chapter-one .chapter-state{margin-bottom:36px}.chapter-one .chapter-copy{margin-left:29%}.chapter-one .chapter-subtitle{margin-top:34px}.chapter-one .chapter-tags{margin-top:40px;max-width:none}.chapter-two .chapter-state{align-self:flex-start;font-size:clamp(28.5px,4.2vw,63.75px);font-weight:400;text-align:left;margin:0}.chapter-two{height:auto;min-height:100svh;justify-content:flex-start;padding-top:clamp(100px,13svh,150px);padding-bottom:clamp(64px,8svh,100px)}.chapter-two .chapter-copy{width:54vw;max-width:100%;margin:clamp(64px,10svh,110px) max(0px,calc(5vw - var(--gutter))) 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:0}.chapter-two .chapter-title{margin:0}.chapter-two .chapter-intro,.chapter-two .chapter-subtitle{font-size:clamp(20px,1.7vw,26px);line-height:1.45;letter-spacing:-.025em;color:#c6c5bc;max-width:100%}.chapter-two .chapter-subtitle{margin-top:22px}.chapter-two .chapter-intro{margin-top:32px}.chapter-three .chapter-copy{margin-left:12%}.chapter-three .chapter-state{font:11px/1.5 var(--mono);letter-spacing:.1em;margin-bottom:35px}.chapter-three .chapter-subtitle{margin:40px 0 35px 27%}.chapter-three .chapter-tags{margin-left:27%}
+    /* WORK — deliberately unequal, alternating image/text spreads. */
+    .work{padding:90px var(--gutter) 145px;background:rgba(15,16,15,.96)}.work-intro{display:flex;justify-content:space-between;align-items:end;margin:76px 0 100px}.work-heading{white-space:nowrap;max-width:100%;font-size:clamp(28px,7.6vw,112px);font-weight:400;letter-spacing:-.06em;line-height:.98}.project{display:grid;grid-template-columns:1.7fr 1fr;gap:7.5%;align-items:center;margin-top:100px}.project:first-of-type{margin-top:0}.project:nth-of-type(2){grid-template-columns:1fr 1.4fr;margin-left:10%;gap:10%;margin-top:150px}.project:nth-of-type(2) .project-image{order:2}.project-image{position:relative;aspect-ratio:1.4;overflow:hidden;background:#232321}.project-video{display:block;width:100%;height:100%;object-fit:cover}.project-film .project-image{aspect-ratio:3 / 2}.project-film .project-video{object-position:center}.project-film .project-description{max-width:100%;font-size:16px;line-height:1.65}.project-title-link{color:inherit;text-decoration:none;transition:opacity .24s ease}.project-title-link:hover{opacity:.78}.project-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.4) brightness(.8);transition:transform .8s,filter .6s}.project-image:hover img{transform:scale(1.025);filter:saturate(.65) brightness(.9)}.project:nth-of-type(2) .project-image{aspect-ratio:1.1}.project-drama .project-title{font-size:clamp(22px,2.4vw,36px);line-height:1.15}.project-drama .project-title>span{display:block;white-space:nowrap}.project-drama .project-description{max-width:100%;font-size:16px;line-height:1.65}.image-caption{position:absolute;inset:auto 18px 16px;display:flex;justify-content:space-between;text-shadow:0 1px 8px #000;font-size:9px}.project-copy>.meta{color:#b8b7af}.project-title{font-size:clamp(30px,3.2vw,50px);font-weight:400;letter-spacing:-.04em;margin:28px 0 22px}.project-description{color:#b7b7b0;font-size:17px;line-height:1.65;max-width:330px}.text-link{display:inline-flex;position:relative;align-items:center;gap:35px;padding:0 0 9px;margin-top:40px;}.project-placeholder{margin-top:18px;font-size:9px;letter-spacing:.12em;color:#8f9089}
+    /* CONTACT / FOOTER */
+    .contact{padding:85px var(--gutter) 32px;background:rgba(9,10,9,.85)}.contact-top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end;padding:85px 0 90px}.contact h2{font-size:clamp(48px,6.8vw,104px);line-height:1.01;letter-spacing:-.06em;font-weight:400}.contact h2 span{display:block;white-space:nowrap}.contact-cta{margin-bottom:9px;justify-self:end}.contact-label{margin-bottom:16px}.contact-email{display:inline-flex;align-items:center;gap:10px;color:#b6b4ac;font-size:12px;text-decoration:none;transition:opacity .24s}.contact-email-arrow{display:inline-block;font-family:Arial,sans-serif;font-size:14px;transition:transform .24s}.contact-email:hover .contact-email-arrow{transform:translate(2px,-2px)}.contact-email:hover{opacity:.7}.footer-grid{padding:60px 0 85px;display:grid;grid-template-columns:2.25fr 1fr 1fr .7fr;gap:36px}.footer-brand .brand{display:inline-block;font-size:35px}.footer-brand p{font-size:15px;line-height:1.65;color:#b7b8af;margin-top:23px}.footer-col h3{color:#94968d;font-weight:400;margin-bottom:24px}.footer-col a,.footer-col span{display:block;width:fit-content;padding:4px 0}.footer-col a{transition:opacity .2s,color .2s}.footer-col a:hover{color:#fff;opacity:.7;text-decoration:none}.footer-col .unavailable{opacity:.5;cursor:default}.footer-bottom{padding-top:24px;display:flex;justify-content:space-between;color:#999d91;font-size:9px}.footer-bottom a{color:var(--paper)}
+    dialog{color:var(--paper);background:#171816;border:0;padding:45px;width:min(620px,calc(100% - 40px));max-height:85svh;overflow:auto}dialog::backdrop{background:rgba(0,0,0,.8)}.dialog-close{position:absolute;right:20px;top:12px;padding:8px;font-size:28px}dialog h2{font-size:38px;line-height:1.1;letter-spacing:-.04em;margin:30px 0 22px;font-weight:400}dialog .dialog-description{font-size:17px;line-height:1.6;color:#c2c3b9}dialog .dialog-note{margin-top:35px;padding-top:20px;color:#acafa4}
+    @media(min-width:1600px){.hero-title{font-size:86px}}
+    @media(max-width:1100px){.site-header{gap:32px}.nav-links{gap:36px}.about-main{grid-template-columns:1fr 3.5fr;gap:25px}.contact-top{grid-template-columns:minmax(0,1fr) auto}.contact-cta{justify-self:end}.footer-grid{grid-template-columns:1.75fr 1fr 1fr .7fr}}
+    @media(max-width:767px){:root{--gutter:24px}.site-header{height:60px;gap:20px;padding:0 var(--gutter)}.brand{font-size:22px}.explore{margin-left:auto;min-width:0;height:40px;padding:0 24px}.menu-toggle{display:block;font:13px/1.5 var(--nav-font);letter-spacing:.14em;padding:8px 0;min-width:44px}.nav-links{display:none;position:absolute;top:100%;left:0;right:0;margin:0;padding:24px;background:rgba(14,14,13,.76);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);flex-wrap:wrap;gap:22px}.nav-links.is-open{display:flex}.nav-links a{font-size:13px;padding:12px 0}.hero{height:100vh;height:100svh}.hero-middle{top:34%}.identity{font-size:9px;line-height:1.8}.hero-title{bottom:8vh;bottom:8svh;font-size:clamp(28px,6.5vw,48px);line-height:1.08;letter-spacing:-.055em;margin:0}.hero-title>span{max-width:100%}.about{padding-top:55px;padding-bottom:80px;min-height:100svh}.section-top .meta{font-size:9px}.section-id{gap:25px}.about-main{display:flex;flex-direction:column;gap:48px;margin-top:clamp(120px,20svh,180px)}.about-title{right:var(--gutter);width:calc(100% - var(--gutter) * 2);font-size:clamp(28px,9vw,54px);line-height:1.1;letter-spacing:-.045em}.currently{display:flex;justify-content:space-between;gap:24px}.currently p{margin:0;font-size:9px}.experience{padding-top:45px}.experience-chapter{min-height:690px;height:92svh;padding-top:100px;padding-bottom:100px}.chapter-title{font-size:clamp(54px,11.5vw,88px)}.chapter-state{font-size:64px}.chapter-one{height:auto;min-height:92svh}.chapter-one .chapter-copy{margin-left:0}.chapter-one .chapter-state{margin-bottom:65px}.chapter-subtitle{font-size:25px}.chapter-tags{font-size:9px;gap:10px 19px}.chapter-footer{font-size:9px;bottom:30px}.chapter-two .chapter-state{font-size:28px;align-self:flex-start;margin:0;text-align:left}.chapter-two{height:auto;min-height:92svh;padding-top:100px;padding-bottom:80px}.chapter-two .chapter-copy{width:92%;max-width:100%;margin:64px 0 0 auto}.chapter-two .chapter-intro,.chapter-two .chapter-subtitle{font-size:20px;max-width:100%}.chapter-three .chapter-copy{margin-left:0}.chapter-three .chapter-subtitle,.chapter-three .chapter-tags{margin-left:9%}.chapter-three .chapter-state{font-size:12px;margin-bottom:65px}.work{padding-top:55px;padding-bottom:80px}.work-intro{margin:58px 0 65px;align-items:start}.work-heading{font-size:clamp(28px,7.6vw,56px)}.project,.project:nth-of-type(2){display:flex;flex-direction:column;gap:30px;margin:0 0 80px;align-items:stretch}.project:nth-of-type(2) .project-image{order:0;aspect-ratio:1.2}.project:nth-of-type(2){margin-left:9%}.project-drama .project-title{font-size:clamp(22px,6.4vw,30px)}.project-title{font-size:34px;margin:19px 0 15px}.project-description{font-size:16px}.text-link{margin-top:25px}.contact{padding-top:50px}.contact-top{grid-template-columns:1fr;padding:65px 0}.contact h2{font-size:clamp(26px,7.8vw,60px);line-height:1.08}.contact-cta{justify-self:end;margin-top:14px}.footer-grid{grid-template-columns:1fr 1fr;gap:45px 25px;padding:45px 0}.footer-brand{grid-column:1/-1}.footer-brand p{font-size:16px}.footer-col h3{margin-bottom:16px}.footer-col{font-size:11px}.footer-bottom{gap:28px;align-items:start;font-size:8px}.footer-bottom>p{max-width:150px;text-align:right}dialog{padding:38px 25px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.film-grain{display:none}}
+    .chapter-project-link{display:inline-flex;align-items:baseline;gap:.5em;color:inherit;text-decoration:none;transition:opacity .24s;cursor:pointer}.chapter-project-link:hover{opacity:.7}.project-link-arrow{display:inline-block;transition:transform .24s}.chapter-project-link:hover .project-link-arrow{transform:translate(2px,-2px)}
+  </style>
+</head>
+<body>
+  <a class="skip-link meta" href="#about">Skip to content</a>
+  <div class="film" aria-hidden="true"><video id="background-video" muted playsinline preload="auto" poster="assets/images/hero-poster.jpg" tabindex="-1"><source src="assets/videos/hero-web.mp4?v=bfbef7e5642b" type="video/mp4"></video></div>
+  <div class="film-shade" aria-hidden="true"></div><div class="film-grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#hero" aria-label="Jing — back to top">JING</a>
+    <nav id="main-navigation" class="nav-links meta" aria-label="Main navigation"><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#contact">Contact</a></nav>
+    <a href="https://drive.google.com/file/d/1DsAlibUgYXPTc8JokxTvKnVdj0bx1j-W/view?usp=drive_link" class="explore meta" target="_blank" rel="noopener noreferrer">RESUME 👀</a>
+    <button class="menu-toggle" aria-controls="main-navigation" aria-expanded="false">MENU</button>
+  </header>
+  <main id="main">
+    <!-- 01 / HERO -->
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="hero-middle"><p class="identity meta">AI GTM<br>AGENT BUILDER<br>AI ARTIST</p></div>
+      <h1 id="hero-title" class="hero-title"><span>By day, I build agents.</span><span>By night, I make art with AI.</span><span>I’m curious how it changes the way we think, create, and live.</span></h1>
+    </section>
+    <!-- 02 / ABOUT -->
+    <section id="about" class="about" aria-labelledby="about-title">
+      <div class="section-top"><p class="section-id meta"><span>01 /</span> About</p><p class="meta muted">How I think</p></div>
+      <div class="about-main"><aside class="currently meta"><span class="muted">Currently</span><p>AI PRODUCT × GTM<br>AI ART DIRECTION<br>HK SAR · JAPAN· KOREA · US</p></aside><h2 id="about-title" class="about-title">I work where product,<br>growth, and creativity<br>start to overlap.</h2></div>
+    </section>
+    <!-- 03 / EXPERIENCE -->
+    <section id="experience" class="experience" aria-label="Experience">
+      <div class="section-top"><h2 class="section-id meta"><span>02 /</span> Experience</h2><p class="meta muted">What I've done</p></div>
+      <article id="arcloop" class="experience-chapter chapter-one" aria-labelledby="arcloop-title">
+        <p class="chapter-state">NOW</p><div class="chapter-copy"><h3 id="arcloop-title" class="chapter-title"><a class="chapter-title-link" href="https://arcloop.ai" target="_blank" rel="noopener noreferrer" aria-label="Visit ArcLoop AI (opens in a new tab)"><span>ARCLOOP AI</span><span class="external-arrow" aria-hidden="true">↗</span></a></h3><p class="chapter-subtitle">Building an AI video agent and leading its 0→1 global GTM. Reached 4,000+ users and $2,000+ revenue in 3 months from launch.</p><p class="chapter-tags meta"><span>SEO/GEO</span><span>SOCIAL MEDIA</span><span>PAID ADS</span><span>CREATOR PARTNERSHIPS</span><span>COMMUNITY/DISCORD</span></p></div><div class="chapter-footer meta"><span>2025 — NOW</span><span>Product → market</span></div>
+      </article>
+      <article id="lazada" class="experience-chapter chapter-two" aria-labelledby="lazada-title">
+        <p class="chapter-state">2024 — 2025</p><div class="chapter-copy"><h3 id="lazada-title" class="chapter-title">LAZADA</h3><p class="chapter-intro"><strong><em>Lazzie</em></strong>, an AI-powered shopping assistant designed to make online shopping more intuitive, personalized, and efficient.</p><p class="chapter-subtitle">Built benchmark datasets and evaluation frameworks for Lazzie agent.</p></div>
+      </article>
+      <article id="dlab" class="experience-chapter chapter-three" aria-labelledby="dlab-title">
+        <div class="chapter-copy"><p class="chapter-state">2023 — 2024</p><h3 id="dlab-title" class="chapter-title"><a class="chapter-title-link" href="https://www.aidlab.hk/en" target="_blank" rel="noopener noreferrer" aria-label="Visit AI DLAB (opens in a new tab)"><span>AI DLAB</span><span class="external-arrow" aria-hidden="true">↗</span></a></h3><p class="chapter-subtitle">Explored human–AI interaction<br>through research and prototypes.</p><p class="chapter-tags meta"><span>Research</span><span>Human-AI interaction</span><span>Prototyping</span></p></div><div class="chapter-footer meta"><span>Where it started</span><a class="chapter-project-link" href="https://github.com/jyliang8024/EcoInnovate-Assistant" target="_blank" rel="noopener noreferrer">PROJECT LINK <span class="project-link-arrow" aria-hidden="true">↗</span></a></div>
+      </article>
+    </section>
+    <!-- 04 / FEATURED WORK: short film and short drama. -->
+    <section id="work" class="work" aria-labelledby="work-title">
+      <div class="section-top"><p class="section-id meta"><span>03 /</span> Selected explorations</p><p class="meta muted">What I make</p></div>
+      <div class="work-intro"><h2 id="work-title" class="work-heading">FEATURED WORK</h2></div>
+      <article class="project project-film" id="beneath-the-deep"><figure class="project-image"><video class="project-video" muted autoplay playsinline loop preload="metadata" poster="assets/images/beneath-the-deep-poster.jpg" aria-label="Beneath the Deep — short film preview"><source src="assets/videos/beneath-the-deep-web.mp4?v=00acfcd996d0" type="video/mp4"></video></figure><div class="project-copy"><p class="meta">01 / AI SHORT FILM</p><h3 class="project-title"><a class="project-title-link" href="https://arcloop.ai/works/contentwork_standalone_8850d8217541" target="_blank" rel="noopener noreferrer">Beneath the Deep</a></h3><p class="project-description">A family of three heads to the beach for a quiet getaway—until their child vanishes from the shore in a matter of minutes. As the search begins, strange shadows beneath the water, panicked schools of fish, and disturbing marks along the rocks all point to the sea. But whatever is hiding out there may not be the real danger.</p></div></article>
+      <article class="project project-drama" id="bound-to-his-ghost"><figure class="project-image"><video class="project-video" muted playsinline loop preload="metadata" poster="assets/images/bound-to-his-ghost-poster.jpg" aria-label="Bound to His Ghost: No Escape from My Ex — short drama preview"><source src="assets/videos/bound-to-his-ghost-web.mp4?v=7a9c9ad6b051" type="video/mp4"></video></figure><div class="project-copy"><p class="meta">02 / AI SHORT DRAMA</p><h3 class="project-title"><span>Bound to His Ghost:</span> <span>No Escape from My Ex</span></h3><p class="project-description">She thought their marriage had ended with his death. But every night, the man she buried comes back to her as a ghost—watching over her, haunting her, still as gentle as he was in life, and far more possessive in death.</p></div></article>
+
+    </section>
+    <!-- 05 / CONTACT & FOOTER -->
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="section-top"><p class="section-id meta"><span>04 /</span> Contact</p></div>
+      <div class="contact-top"><h2 id="contact-title"><span>COME MAKE</span><span>SOMETHING WILD</span><span>WITH ME.</span></h2><div class="contact-cta"><p class="contact-label meta">GET IN TOUCH</p><a class="contact-email" href="mailto:jingying.liang@outlook.com">jingying.liang@outlook.com <span class="contact-email-arrow" aria-hidden="true">↗</span></a></div></div>
+      <footer><div class="footer-grid"><div class="footer-brand"><a class="brand" href="#hero">JING</a></div><nav class="footer-col meta" aria-label="Footer navigation"><h3>Navigation</h3><a href="#about">About</a><a href="#experience">Experience</a><a href="#work">Work</a><a href="#contact">Contact</a></nav><div class="footer-col meta"><h3>Social</h3><a href="https://www.linkedin.com/in/jingying-liang-7914a5266/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/jyliang8024" target="_blank" rel="noopener noreferrer">GitHub</a><a href="mailto:jingying.liang@outlook.com">Email</a></div><nav class="footer-col meta" aria-label="Experience index"><h3>Index</h3><a href="#arcloop" aria-label="2026: Arcloop AI">2026</a><a href="#lazada" aria-label="2025: Lazada">2025</a><a href="#dlab" aria-label="2024: AI DLAB">2024</a></nav></div><div class="footer-bottom meta"><a href="#hero">JING © 2026</a><p>BUILT WITH AI AND CURIOSITY.</p></div></footer>
+    </section>
+  </main>
+
+  <script>
+    'use strict';
+    const VIDEO_URL = 'assets/videos/hero-web.mp4?v=bfbef7e5642b';
+    const video = document.getElementById('background-video');
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let reducedMotion = motionPreference.matches;
+    let hasGSAP = false;
+    let videoTween = null;
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+    const pageProgress = () => clamp(window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight), 0, 1);
+
+    // Wait for metadata; serialize seeks so rapid scrolls never queue stale frames.
+    // No autoplay or play() calls: scrolling is the only playback control.
+    function initVideoScrub() {
+      let duration = 0, targetTime = 0, initialized = false, scheduled = 0, seekingSince = 0;
+      let mobile = window.matchMedia('(max-width: 767px)').matches;
+      let slowDecoder = false;
+      function seekLatest() {
+        scheduled = 0;
+        if (!duration || video.seeking || video.readyState < 2 || reducedMotion) return;
+        // Quantize on mobile or slow decoders; always keep the latest requested position.
+        const step = (mobile || slowDecoder) ? 1 / 24 : 1 / 60;
+        const next = clamp(Math.round(targetTime / step) * step, 0, duration);
+        if (Math.abs(video.currentTime - next) < step * .7) return;
+        seekingSince = performance.now();
+        try { video.currentTime = next; } catch (_) { /* A loading decoder will retry on canplay. */ }
+      }
+      function requestSeek() { if (!scheduled) scheduled = requestAnimationFrame(seekLatest); }
+      function updateTarget(progress) {
+        targetTime = clamp(progress, 0, 1) * duration;
+        requestSeek();
+      }
+      video.addEventListener('seeked', () => {
+        if (performance.now() - seekingSince > 150) slowDecoder = true;
+        requestSeek();
+      });
+      function initialize() {
+        if (initialized || !Number.isFinite(video.duration) || video.duration <= 0) return;
+        initialized = true;
+        duration = Math.max(0, video.duration - 1 / 30);
+        video.pause();
+        if (reducedMotion) return;
+        if (hasGSAP) {
+          const playhead = { progress: 0 };
+          videoTween = gsap.to(playhead, {
+            progress: 1, ease: 'none', onUpdate: () => updateTarget(playhead.progress),
+            scrollTrigger: { id: 'film-scrub', trigger: document.documentElement, start: 0,
+              end: () => Math.max(1, document.documentElement.scrollHeight - window.innerHeight),
+              scrub: .5, invalidateOnRefresh: true,
+              onRefresh: self => { playhead.progress = self.progress; updateTarget(self.progress); }
+            }
+          });
+          ScrollTrigger.refresh();
+        } else {
+          // CDN unavailable: preserve native scrolling and direct video scrubbing.
+          window.addEventListener('scroll', () => updateTarget(pageProgress()), { passive: true });
+        }
+        updateTarget(pageProgress());
+      }
+      video.addEventListener('loadedmetadata', initialize, { once: true });
+      video.addEventListener('canplay', requestSeek);
+      window.addEventListener('resize', () => { mobile = window.innerWidth <= 767; updateTarget(pageProgress()); }, { passive: true });
+      if (video.readyState >= 1) initialize();
+      if (!video.querySelector('source').getAttribute('src')) video.querySelector('source').src = VIDEO_URL;
+    }
+    function initHeroAnimation() {
+      if (!hasGSAP || reducedMotion) return;
+      gsap.from('.hero-title > span', { y: 28, opacity: 0, duration: 1.15, stagger: .1, ease: 'power2.out', clearProps: 'transform,opacity' });
+      gsap.from('.identity', { opacity: 0, duration: 1, delay: .35, stagger: .1, clearProps: 'opacity' });
+    }
+    function initAboutAnimation() {
+      if (!hasGSAP || reducedMotion) return;
+      gsap.from('.about-title', { y: 45, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top 85%', end: 'top 20%', scrub: .5 } });
+    }
+    function initExperienceAnimation() {
+      if (!hasGSAP || reducedMotion) return;
+      document.querySelectorAll('.experience-chapter').forEach((chapter, index) => {
+        gsap.from(chapter.querySelector('.chapter-copy'), { x: index === 1 ? 24 : -24, y: 28, opacity: .08, ease: 'none', scrollTrigger: { trigger: chapter, start: 'top 70%', end: 'top 12%', scrub: .5 } });
+        gsap.from(chapter.querySelector('.chapter-state'), { y: 22, opacity: .1, ease: 'none', scrollTrigger: { trigger: chapter, start: 'top 85%', end: 'top 30%', scrub: .5 } });
+      });
+    }
+    function initWorkAnimation() {
+      if (!hasGSAP || reducedMotion) return;
+      document.querySelectorAll('.project').forEach(project => gsap.from(project, { y: 38, opacity: .12, ease: 'none', scrollTrigger: { trigger: project, start: 'top 93%', end: 'top 60%', scrub: .5 } }));
+    }
+    function initNavigation() {
+      const header = document.querySelector('.site-header');
+      const toggle = document.querySelector('.menu-toggle'), nav = document.querySelector('.nav-links');
+      const closeMenu = () => { toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = 'MENU'; nav.classList.remove('is-open'); };
+      toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); toggle.textContent = open ? 'CLOSE' : 'MENU'; nav.classList.toggle('is-open', open); });
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+      document.addEventListener('click', event => { if (!header.contains(event.target)) closeMenu(); });
+      document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (!target) return;
+        event.preventDefault(); closeMenu();
+        target.scrollIntoView({ behavior: reducedMotion ? 'instant' : 'smooth', block: 'start' });
+        // File URLs cannot use every History API operation in all browsers.
+        try { history.replaceState(null, '', link.getAttribute('href')); } catch (_) {}
+        target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
+      }));
+      let pending = false;
+      const update = () => {
+        // Scroll only updates the active section; the navbar is always visible.
+        const active = [...document.querySelectorAll('main > section')].reverse().find(section => section.getBoundingClientRect().top <= window.innerHeight * .4);
+        nav.querySelectorAll('a').forEach(link => { if (active && link.hash === '#' + active.id) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); });
+        pending = false;
+      };
+      window.addEventListener('scroll', () => { if (!pending) { requestAnimationFrame(update); pending = true; } }, { passive: true });
+      window.addEventListener('resize', () => { if (window.innerWidth > 767) closeMenu(); update(); }, { passive: true });
+      update();
+    }
+    // Only decode the project preview while it is visible; the background film
+    // retains its independent scroll-controlled playhead.
+    function initProjectVideo() {
+      const previews = [...document.querySelectorAll('.project-video')];
+      if (!previews.length) return;
+      const inView = new Map(previews.map(preview => [preview, false]));
+      previews.forEach(preview => { preview.muted = true; });
+      const updatePlayback = preview => {
+        if (inView.get(preview) && !document.hidden && !reducedMotion) {
+          const playRequest = preview.play();
+          if (playRequest) playRequest.catch(() => { /* Keep the poster if autoplay is unavailable. */ });
+        } else {
+          preview.pause();
+        }
+      };
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          inView.set(entry.target, entry.isIntersecting && entry.intersectionRatio >= .35);
+          updatePlayback(entry.target);
+        });
+      }, { threshold: [0, .35] });
+      previews.forEach(preview => observer.observe(preview));
+      document.addEventListener('visibilitychange', () => previews.forEach(updatePlayback));
+      window.addEventListener('pagehide', () => previews.forEach(preview => preview.pause()));
+      window.addEventListener('pageshow', () => previews.forEach(updatePlayback));
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      hasGSAP = Boolean(window.gsap && window.ScrollTrigger);
+      if (hasGSAP) { gsap.registerPlugin(ScrollTrigger); ScrollTrigger.config({ ignoreMobileResize: true }); }
+      initNavigation(); initHeroAnimation(); initAboutAnimation(); initExperienceAnimation(); initWorkAnimation(); initVideoScrub(); initProjectVideo();
+      let resizeTimer;
+      window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(() => { if (hasGSAP) ScrollTrigger.refresh(); }, 180); }, { passive: true });
+      window.addEventListener('load', () => { if (hasGSAP) ScrollTrigger.refresh(); });
+      document.fonts.ready.then(() => { if (hasGSAP) ScrollTrigger.refresh(); });
+      // Re-initialize all animation states if the OS motion preference changes.
+      motionPreference.addEventListener('change', () => window.location.reload());
+    });
+  </script>
+</body>
+</html>
